@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}This is {{ name }} Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1>Python</h1></span>
+        </a>
+
+         <ul class="nav nav-pills">
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page1" class="nav-link ">Git</a></li>
+            <li class="nav-item"><a href="/page2" class="nav-link">Docker</a></li>
+            <li class="nav-item"><a href="/page3" class="nav-link active">Python</a></li>
+            <li class="nav-item"><a href="/page4" class="nav-link">CI/CD</a></li>
+        </ul>
+    </header>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+Python is a high-level multi-paradigm programming language that emphasizes code readability and simplicity, with the aim of helping programmers write clear, logical code for small- and large-scale projects. It features a comprehensive standard library, due to which Python has been a “batteries included” language.
+</p>
+<p>
+Today, Python is one of the most popular programming languages, according to multiple organizations that track programming language utilization for personal, scientific, and enterprise use.
+</p>
+<h2>Origins and History</h2>
+<p>
+Python was conceived in the 1980’s by Guido Van Rossum, who until recently, served as Python’s lead developer, chief decision maker, and Benevolent Dictator for Life (BDFL). The name is a tribute to the British comedy group, Monty Python.
+</p>
+<p>
+Python 2 was released in 2000, and Python 3 in 2008. Python versions before Python 3.0.0 versions have been sunset as of 2020. The latest stable release is Python 3.10.
+</p>
+<h2>Design</h2>
+<p>
+The core design philosophy of the Python programming language is summarized as a set of 19 principles, called the Zen of Python, which are listed as follows:
+</p>
+<ul>
+<li>Beautiful is better than ugly.</li>
+<li>Explicit is better than implicit.</li>
+<li>Simple is better than complex.</li>
+<li>Complex is better than complicated.</li>
+<li>Flat is better than nested.</li>
+<li>Sparse is better than dense.</li>
+<li>Readability counts.</li>
+<li>Special cases aren't special enough to break the rules.</li>
+<li>Although practicality beats purity.</li>
+<li>Errors should never pass silently.</li>
+<li>Unless explicitly silenced.</li>
+<li>In the face of ambiguity, refuse the temptation to guess.</li>
+<li>There should be one — and preferably only one — obvious way to do it.</li>
+<li>Although that way may not be obvious at first unless you're Dutch.</li>
+<li>Now is better than never.</li>
+<li>Although never is often better than right now.</li>
+<li>If the implementation is hard to explain, it's a bad idea.</li>
+<li>If the implementation is easy to explain, it may be a good idea.</li>
+<li>Namespaces are one honking great idea – let's do more of those!</li>
+</ul>
+<h2>Features</h2>
+<p>
+Python is a multi-paradigm programming language, allowing object-oriented and structured programming, with additional support for functional programming constructs and metaprogramming.
+</p>
+<p>
+Python is a dynamically-typed language. It has typed objects, but untyped variable names, and uses duck typing. It also features garbage collection, utilizing a combination of reference counting and a cycle-detecting garbage collector for memory management. It uses dynamic name resolution (late binding), which binds method and variable names during program execution.
+</p>
+</div>
+        <div class="col">
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/python-logo.png') }}" class="card-img-top rounded-pill"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reference Links</h5>
+                    <p class="card-text"></p>
+                    <a href="https://www.python.org/" class="btn btn-primary">Python Homepage</a>
+                     <a href="https://www.w3schools.com/python/" class="btn btn-primary">Python Tutorial</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

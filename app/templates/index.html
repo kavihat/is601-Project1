@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}This is {{ name }} Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1><b>My Home page</b></h1></span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page1" class="nav-link">Git</a></li>
+            <li class="nav-item"><a href="/page2" class="nav-link">Docker</a></li>
+            <li class="nav-item"><a href="/page3" class="nav-link">Python</a></li>
+            <li class="nav-item"><a href="/page4" class="nav-link">CI/CD</a></li>
+        </ul>
+    </header>
+</div>
+<div id="carouselExampleControls" class="carousel slide border border-dark" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active ">
+            <a href="/page1">
+            <img src="{{ url_for('static', filename='images/git-logo.png') }}" class="d-block rounded" alt="...">
+                </a>
+        </div>
+        <div class="carousel-item">
+            <a href="/page2">
+            <img src="{{ url_for('static', filename='images/docker-logo.png') }}" class="d-block rounded" alt="...">
+                </a>
+        </div>
+        <div class="carousel-item">
+            <a href="/page3">
+            <img src="{{ url_for('static', filename='images/python-logo.png') }}" class="d-block rounded" alt="...">
+            </a>
+        </div>
+           <div class="carousel-item">
+            <a href="/page4">
+            <img src="{{ url_for('static', filename='images/cicd-logo.png') }}" class="d-block rounded" alt="...">
+            </a>
+        </div>
+    </div>
+    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-5 border-0 " style="width: 14rem;">
+                <img src="{{ url_for('static', filename='images/calicut.png') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Bachelor of Technology (2013 - 2017)</h5>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mt-5 border-0" style="width: 14rem;">
+                <img src="{{ url_for('static', filename='images/tcs.jpg') }}" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Software Developer (2017 - 2019)</h5>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mt-5 border-0 " style="width: 14rem;">
+                <img src="{{ url_for('static', filename='images/njit-logo.jpg') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">MS CS Student (2020 - 2022)</h5>
+
+
+                </div>
+            </div>
+        </div>
+          <div class="col">
+            <div class="card mt-5 border-0" style="width: 14rem;">
+                <img src="{{ url_for('static', filename='images/njit-logo.jpg') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Graduate Research Assistant (2021)</h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</br>
+
+<div id="title" class=" p-3 purple makeBigger titleFont">
+    <p>
+    <h1>About me</h1>
+    </p>
+    </div>
+<div class = "p-3">
+    <p>
+        Hi, My name is Kavitha Kannanunny. Currently I am a computer science graduate student at NJIT. I will be graduating this May. I am a software engineer by profession. I have 2 years of work experience at Tata Consultancy services.</p>
+<p>
+    At TCS, I worked with Nielsen Corporation. I was in the Nielsen Audio team. Here, I worked as a software developer creating dashboards and backend systems for analyzing and processing radio listening data generated by nielsen clients.
+<p>
+    I have also worked as a Research Assistant at NJIT where I researched the spread of covid based misinformation on social media websites like Twitter using graph Analysis.
+</p>
+</p>
+    </p>
+</div>
+
+
+<div id="title" class=" p-3 purple makeBigger titleFont">
+    <h1> Work Experience </h1>
+
+</div>
+<div class = "m-3">
+<p><b>Research Assistant, New Jersey Institute of Technology, Newark October 2021 to December 2021 </b>
+<ul>
+    <li>Developed a Python application to analyze COVID misinformation spreading through Twitter.</li>
+    <li>Application identified communities of users based on retweet information created from JSON tweet data.</li>
+    <li> NetworkX and Pandas were used to create and analyze graphs. Gephi and Matplotlib were used for visualization.</li>
+</ul>
+</p>
+<p><b>Software Engineer, Tata Consultancy Services Ltd September 2017 to December 2019 </b>
+<ul>
+    <li>Designed and developed an application for Nielsen Audio to process radio listening data and produce analytics on
+demographic and geographic market listening habits and advertising recommendations.</li>
+    <li>Built a Sencha EXT based dashboard to allow customers to submit and monitor jobs for data processing and analysis. The dashboard sent requests using a REST API to a server implemented in Java, connected to an Oracle database.
+</li>
+    <li> Extracted raw radio data from multiple sources and transformed them into structured forms using ETL tools like ODI and Informatica in order to prepare them for further process and analysis.
+</li>
+    <li>Built a Proof of Concept for monitoring and scheduling jobs using Apache Airflow and Python with Snowflake as the data warehouse.
+</li>
+</ul>
+</p>
+</div>
+<p>
+
+<div id="title" class=" p-3 purple makeBigger titleFont">
+<h1>SKILLS </h1>
+    </div>
+<ul>
+    <li><b>Languages:</b> Python, Java, SQL, PL/SQL, JavaScript, HTML, CSS, PHP </li>
+    <li> <b>Technologies:</b> Apache ActiveMQ, Hadoop, Docker, MySQL, MongoDB, Neo4j, ReactJS, AWS </li>
+    <li> <b>Tools:</b> Git, Scikit-learn, Pandas, Apache Airflow, Oracle Data Integrator, Microsoft Office </li>
+    <li> <b> Other: </b> Agile Software Development, SDLC, Linux </li>
+</ul>
+        </p>
+
+
+</div>
+
+</body>
+</html>
+

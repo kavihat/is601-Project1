@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}This is {{ name }} Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1>CI/CD</h1></span>
+        </a>
+
+       <ul class="nav nav-pills">
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page1" class="nav-link">Git</a></li>
+            <li class="nav-item"><a href="/page2" class="nav-link">Docker</a></li>
+            <li class="nav-item"><a href="/page3" class="nav-link">Python</a></li>
+            <li class="nav-item"><a href="/page4" class="nav-link active">CI/CD</a></li>
+        </ul>
+    </header>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are continuous integration (CI), continuous delivery (CD), and continuous deployment (also CD). CI/CD is a solution to the problems integrating new code can cause for development and operations teams. Specifically, CI/CD introduces ongoing automation and continuous monitoring throughout the lifecycle of apps, from integration and testing phases to delivery and deployment. Taken together, these connected practices are often referred to as a "CI/CD pipeline".
+</p>
+
+<h2>Stages of a CI CD Pipeline</h2>
+<p>
+CI/CD to specify just the connected practices of continuous integration and continuous delivery, or alternatively, the three connected practices of continuous integration, continuous delivery, and continuous deployment. CI/CD is really a process, often visualized as a pipeline, that involves adding a high degree of ongoing automation and continuous monitoring to app development.
+</p>
+<p>
+A summary of each of the stages in the pipeline are given below.
+</p>
+<h3>Continuous Integration</h3>
+<p>
+In modern application development, the goal is to have multiple developers working simultaneously on different features of the same app. Continuous integration (CI) helps developers merge their code changes back to a shared or mainline branch as frequently as needed. Once a developer’s changes to an application are merged, those changes are validated by automatically building the application and running different levels of automated testing, typically unit and integration tests, to ensure the changes haven’t broken the app. This means testing everything from classes and functions, to the different modules that comprise the entire app. If automated testing discovers a conflict between new and existing code, CI makes it easier to fix those bugs quickly and often.
+</p>
+<p>
+Successful CI means new code changes to an app are regularly built, tested, and merged to a shared repository. It’s a solution to the problem of having too many branches of an app in development at once that might conflict with each other.
+</p>
+<h3>Continuous Delivery</h3>
+<p>
+Continuous delivery (CD) automates the release of the validated code from CI (after the automation of builds and unit and integration testing) to a repository. So, in order to have an effective continuous delivery process, it’s important that CI is already built into the development pipeline. The goal of continuous delivery is to have a codebase that is always ready for deployment to a production environment.
+</p>
+<p>
+In continuous delivery, every stage — from the merger of code changes to the delivery of production-ready builds — involves test automation and code release automation. At the end of that process, the operations team is able to deploy an app to production quickly and easily.
+</p>
+<h3>Continuous Deployment</h3>
+<p>
+The final stage of a mature CI/CD pipeline is continuous deployment (CD). As an extension of continuous delivery, which automates the release of a production-ready build to a code repository, continuous deployment automates releasing an app to production. Continuous deployment means that a developer’s change to an application could go live within minutes of writing it (assuming it passes testing). This makes it much easier to continuously receive and incorporate user feedback.
+</p>
+<p>
+Taken together, all of these CI/CD practices make deployment of an application less risky, whereby it’s easier to release changes to apps in small pieces, rather than all at once. There’s also a lot of upfront investment, though, since automated tests will need to be written to accommodate a variety of testing and release stages in the CI/CD pipeline.
+</p>
+
+        </div>
+        <div class="col">
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/cicd-logo.png') }}" class="card-img-top rounded-pill"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reference Links</h5>
+                    <p class="card-text"></p>
+                    <a href="https://www.redhat.com/en/topics/devops/what-is-ci-cd" class="btn btn-primary">CI/CD Docs</a>
+                    <a href=" https://en.wikipedia.org/wiki/CI/CD" class="btn btn-primary">Wikipedia</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
