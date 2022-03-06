@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}This is {{ name }} Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1>Git</h1></span>
+        </a>
+
+        <ul class="nav nav-pills">
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page1" class="nav-link active">Git</a></li>
+            <li class="nav-item"><a href="/page2" class="nav-link">Docker</a></li>
+            <li class="nav-item"><a href="/page3" class="nav-link">Python</a></li>
+            <li class="nav-item"><a href="/page4" class="nav-link">CI/CD</a></li>
+        </ul>
+    </header>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+<p>Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+</p>
+   <h2>History</h2>
+Git development began in April 2005 under Linus Torvalds, for development of the Linux kernel, with other kernel developers contributing to its initial development. He wanted a distributed source-control management (SCM) system, but none of the available free systems met his needs. Torvalds cited an example of an SCM system needing 30 seconds to apply a patch and update all associated metadata, and noted that this would not scale to the needs of Linux kernel development, where synchronizing with fellow maintainers could require 250 such actions at once </br>
+        </br>
+            <h2>Why Git?</h2>
+<p>Git helps software developing teams manage changes to their source code over time. In other words, version control keeps track of every change in your code, and allows you to go back in time when something goes wrong.
+It is also really helpful to prevent concurrent work from conflicting when multiple people are working on the same project. An individual may be working on the sidebar navigation feature for a webpage, while another may be simultaneously updating the header. Version control systems facilitate the work of multiple individuals by allowing them to use different branches as part of one “file tree” and merge their updated code to one source of truth when it's ready.
+</p>
+            <h2>Git Design </h2>
+<p>The design of Git is akin to that of a filesystem, with added content addressing and versioning. Git has two data structures — a mutable index (also called stage or cache) that caches information about the working directory and the next revision to be committed; and an immutable, append-only object database. The index serves as a connection point between the object database and the working tree.
+</p>
+
+            <p>Git is a distributed version control system. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server. Git gives each developer a local copy of the full development history, and changes are copied from one such repository to another. These changes are imported as added development branches and can be merged in the same way as a locally developed branch.
+            </p>
+            <h2>Common Operations in Git </h2>
+            <ul>
+                <li>Clone: Downloads a copy of the project (remote repository) to your local computer.</li>
+                <li>Branch: Lists all your project branches and highlights your current branch.</li>
+                <li>Checkout: Selects the branch you want to work on</li>
+                <li>Pull: Pulls recent changes from the remote repository to your local files.</li>
+                <li>Add: Stages file that you would like to commit.</li>
+ <li>Commit: Saves the group of changes you staged to your local repository.</li>
+ <li>Status: Lists all the files that you have worked on and have not been saved in a commit yet.</li>
+ <li>Stash: Saves any changes you have made locally and it reverts the working directory to match the HEAD of your last commit.</li>
+ <li>Push: Saves your local committed changes into the remote repository so everybody else has access to your work.</li>
+ <li>Tag: Mark specific points in a repository’s history as being important, including designating release points.</li>
+            </ul>
+
+ </div>
+        <div class="col">
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/git-logo.png') }}" class="card-img-top rounded-pill"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reference Links</h5>
+                    <p class="card-text"></p>
+                    <a href="https://git-scm.com" class="btn btn-primary">Git Homepage</a>
+                    <a href=" https://en.wikipedia.org/wiki/Git" class="btn btn-primary">Wikipedia</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
