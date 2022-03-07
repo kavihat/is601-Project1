@@ -58,6 +58,14 @@ The software that hosts the containers is called Docker Engine.</p>
 
 Containers are isolated from one another and bundle their own software, libraries and configuration files. They can communicate with each other through well-defined channels. Container technology offers all the functionality and benefits of VMs — including application isolation, cost-effective scalability, and disposability — plus other advantages, such as lighter weight, greater resource efficiency, and improved developer productivity (by being faster and easier to deploy, provision and restart).
 </p>
+            <h2>Docker Hub</h2>
+            <p>
+                Docker Cloud uses Docker Hub as its native registry for storing both public and private repositories. Once you push your images to Docker Hub, they will be available in Docker Cloud. <p>Click this button to see the project repository on docker hub for this project.</p>
+                <a href="https://hub.docker.com/repository/docker/kavithak46/is601-project1" class="btn btn-dark">Project repository </a>
+
+            </p>
+
+
             <h2>Components</h2>
 
 The Docker software as a service offering includes these components.
@@ -72,6 +80,19 @@ The Docker software as a service offering includes these components.
     <li>Registries</br>  A Docker registry is a repository for Docker images. Docker clients connect to registries to download ("pull") images for use or upload ("push") images that they have built. Registries can be public or private. Two main public registries are Docker Hub and Docker Cloud. Docker Hub is the default registry where Docker looks for images. Docker registries also allow the creation of notifications based on events.</li>
     <li>Docker Compose </br>  Docker Compose allows users to build an application out of processes in multiple containers that all reside on the same host. It consolidates the configuration of all the services that are included in the application, and can deploy and run their containers in a single command.</li>
         </ol>
+            <p>
+                <h2>Docker Commands</h2>
+            <ul>
+                <li><b>docker build -t getting-started</b> Build an upodated version of image. -t stands for tag of that image</li>
+                <li><b>docker run -dp 80:80 docker/getting-started</b> Command to run the container in detached mode at port 80 and use image docker/getting-started</li>
+                <li><b>docker version</b> To know the current version of Docker</li>
+                <li><b>docker image rm</b> To remove a particular image in Docker</li>
+                <li><b>docker container logs</b> To show information logged by running container</li>
+                <li><b>docker ps</b> To get the container ID of the current container</li>
+                <li><b>docker compose up</b> Compose is a tool for defining and running multi-container Docker applications. Create a docker-compose.yml  file to configure your application's services. And this command is used to start all service</li>
+                <li><b>docker compose down</b> Stops containers and removes containers, networks, volumes, and images created by up</li>
+            </ul>
+            </p>
         </div>
         <div class="col">
             <div class="bg-muted border border-dark" style="width: 18rem;">
@@ -82,6 +103,7 @@ The Docker software as a service offering includes these components.
 
                     <a href="https://docs.docker.com/get-started/" class="btn btn-primary">Docker getting started</a>
                     <a href="https://docker-curriculum.com/" class="btn btn-primary">Docker docs </a>
+                    <a href="https://hub.docker.com/repository/docker/kavithak46/is601-project1" class="btn btn-primary">Project repository </a>
 
                 </div>
             </div>

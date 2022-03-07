@@ -49,24 +49,47 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <p>
-CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are continuous integration (CI), continuous delivery (CD), and continuous deployment (also CD). CI/CD is a solution to the problems integrating new code can cause for development and operations teams. Specifically, CI/CD introduces ongoing automation and continuous monitoring throughout the lifecycle of apps, from integration and testing phases to delivery and deployment. Taken together, these connected practices are often referred to as a "CI/CD pipeline".
+<p>
+CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are continuous integration (CI), continuous delivery (CD), and continuous deployment (also CD).
 </p>
-
+<p>
+CI/CD is a solution to the problems integrating new code can cause for development and operations teams. Specifically, CI/CD introduces ongoing automation and continuous monitoring throughout the lifecycle of apps, from integration and testing phases to delivery and deployment. Taken together, these connected practices are often referred to as a "CI/CD pipeline".
+</p>
+<p>
+    You achieve continuous delivery by continuously integrating the software done by the development team, building executables, and running automated tests on those executables to detect problems. Furthermore you push the executables into increasingly production-like environments to ensure the software will work in production. To do this you use a DeploymentPipeline. <sup>1</sup>
+</p>
 <h2>Stages of a CI CD Pipeline</h2>
 <p>
 CI/CD to specify just the connected practices of continuous integration and continuous delivery, or alternatively, the three connected practices of continuous integration, continuous delivery, and continuous deployment. CI/CD is really a process, often visualized as a pipeline, that involves adding a high degree of ongoing automation and continuous monitoring to app development.
 </p>
-<p>
-A summary of each of the stages in the pipeline are given below.
-</p>
+
+<p>We have also implemented a CI/CD pipeline for this IS601 project, using GitHub Actions to automate the building, testing, and deployment of the code to development and production Heroku apps. GitHub Actions automates, customizes, and executes software development workflows from within a repository. CI/CD configuration is  A summary of each of the stages in the pipeline are given below, with a summary of how each stage was implemented in the IS601 project.</p>
 <h3>Continuous Integration</h3>
 <p>
 In modern application development, the goal is to have multiple developers working simultaneously on different features of the same app. Continuous integration (CI) helps developers merge their code changes back to a shared or mainline branch as frequently as needed. Once a developer’s changes to an application are merged, those changes are validated by automatically building the application and running different levels of automated testing, typically unit and integration tests, to ensure the changes haven’t broken the app. This means testing everything from classes and functions, to the different modules that comprise the entire app. If automated testing discovers a conflict between new and existing code, CI makes it easier to fix those bugs quickly and often.
 </p>
 <p>
 Successful CI means new code changes to an app are regularly built, tested, and merged to a shared repository. It’s a solution to the problem of having too many branches of an app in development at once that might conflict with each other.
+<p>
+     Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly. <sup>2</sup>   </p>
 </p>
+<h4>In This Project</h4>
+<p>
+CI configuration for GitHub Actions is saved as YAML files in the .github/workflows directory.
+</p>
+<p>
+Feature development always happens in a branch separate from the mainline branch. When code is pushed to a development branch, and a pull-request is made against the main branch, the PR event triggers a GitHub action that runs unit tests using pytest, and deploys a build to a Heroku dev app.
+</p>
+<pre>
+on:
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  run_pytest:
+  . . .
+      run: pytest -vv
+</pre>
 <h3>Continuous Delivery</h3>
 <p>
 Continuous delivery (CD) automates the release of the validated code from CI (after the automation of builds and unit and integration testing) to a repository. So, in order to have an effective continuous delivery process, it’s important that CI is already built into the development pipeline. The goal of continuous delivery is to have a codebase that is always ready for deployment to a production environment.
@@ -74,13 +97,51 @@ Continuous delivery (CD) automates the release of the validated code from CI (af
 <p>
 In continuous delivery, every stage — from the merger of code changes to the delivery of production-ready builds — involves test automation and code release automation. At the end of that process, the operations team is able to deploy an app to production quickly and easily.
 </p>
+<h4>In This Project</h4>
+<p>
+Continuous Delivery follows the result of CI. Once the development branch has been merged with the main branch (following the approval of the pull request), the merge event triggers another GitHub action. The merged code is tagged with a release tag. This workflow runs integration tests using pytest, builds a Docker image and pushes it to Docker Hub. The Docker image is built in a Linux-based container and pushed to Docker Hub. The login information for Docker Hub is stored as environment variables in GitHub, and accessible from the YAML files.
+</p>
+<pre>
+on:
+  push:
+    branches:
+      - 'main'
+    tags:
+      - 'v*'
+. . .
+build-container:
+. . .
+- name: Build and push
+    steps:
+        uses: docker/build-push-action@v2
+</pre>
 <h3>Continuous Deployment</h3>
 <p>
 The final stage of a mature CI/CD pipeline is continuous deployment (CD). As an extension of continuous delivery, which automates the release of a production-ready build to a code repository, continuous deployment automates releasing an app to production. Continuous deployment means that a developer’s change to an application could go live within minutes of writing it (assuming it passes testing). This makes it much easier to continuously receive and incorporate user feedback.
+<h4>In This Project </h4>
+<p>
+Continuous Deployment in this project happens in the same GitHub action that performs the Delivery. The Docker image is used to deploy the application to a Heroku production build. This deployment requires the Heroku API key, which is also stored as a GitHub secret. Taken together, merging code to the main branch runs tests, builds a Docker image of the project, and pushes the application to a Heroku production server.
 </p>
+
+<pre>
+deploy:
+  steps:
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${ {secrets.HEROKU_API_KEY} }
+        heroku_app_name: "docker-project1-prod"
+
+
+</pre>
 <p>
 Taken together, all of these CI/CD practices make deployment of an application less risky, whereby it’s easier to release changes to apps in small pieces, rather than all at once. There’s also a lot of upfront investment, though, since automated tests will need to be written to accommodate a variety of testing and release stages in the CI/CD pipeline.
 </p>
+<p>
+    <h2>Reference</h2>
+            [1] <a href = "https://www.martinfowler.com/bliki/ContinuousDelivery.html">https://www.martinfowler.com/bliki/ContinuousDelivery.html</a></br>
+            [2] <a href = "https://www.martinfowler.com/articles/continuousIntegration.html"> https://www.martinfowler.com/articles/continuousIntegration.html</a>
+</p>
+
 
         </div>
         <div class="col">

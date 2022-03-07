@@ -62,31 +62,7 @@ Python was conceived in the 1980’s by Guido Van Rossum, who until recently, se
 <p>
 Python 2 was released in 2000, and Python 3 in 2008. Python versions before Python 3.0.0 versions have been sunset as of 2020. The latest stable release is Python 3.10.
 </p>
-<h2>Design</h2>
-<p>
-The core design philosophy of the Python programming language is summarized as a set of 19 principles, called the Zen of Python, which are listed as follows:
-</p>
-<ul>
-<li>Beautiful is better than ugly.</li>
-<li>Explicit is better than implicit.</li>
-<li>Simple is better than complex.</li>
-<li>Complex is better than complicated.</li>
-<li>Flat is better than nested.</li>
-<li>Sparse is better than dense.</li>
-<li>Readability counts.</li>
-<li>Special cases aren't special enough to break the rules.</li>
-<li>Although practicality beats purity.</li>
-<li>Errors should never pass silently.</li>
-<li>Unless explicitly silenced.</li>
-<li>In the face of ambiguity, refuse the temptation to guess.</li>
-<li>There should be one — and preferably only one — obvious way to do it.</li>
-<li>Although that way may not be obvious at first unless you're Dutch.</li>
-<li>Now is better than never.</li>
-<li>Although never is often better than right now.</li>
-<li>If the implementation is hard to explain, it's a bad idea.</li>
-<li>If the implementation is easy to explain, it may be a good idea.</li>
-<li>Namespaces are one honking great idea – let's do more of those!</li>
-</ul>
+
 <h2>Features</h2>
 <p>
 Python is a multi-paradigm programming language, allowing object-oriented and structured programming, with additional support for functional programming constructs and metaprogramming.
@@ -94,6 +70,38 @@ Python is a multi-paradigm programming language, allowing object-oriented and st
 <p>
 Python is a dynamically-typed language. It has typed objects, but untyped variable names, and uses duck typing. It also features garbage collection, utilizing a combination of reference counting and a cycle-detecting garbage collector for memory management. It uses dynamic name resolution (late binding), which binds method and variable names during program execution.
 </p>
+            <h2>Pytest</h2>
+            <p>The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.</p>
+
+<h2>Outline of the project </h2>
+<ul>
+<li><b>is601-Project1 :</b> Root of the project </li>
+<li><b>.github: </b> This folder consists of the workflow yaml files(dev.yml and prof.yml) for production and development workflow deployment. </li>
+<li><b>app :</b>This folder consist of all the files needed for creating the website, creating docker image, configuration file for hosting on heroku etc . It consist of controllers, static and templates subfolders. Controllers contain methods to render the html pages. Static consists of three subfolders - css, images and js. Each containing the stylesheet, images used in webpage and the javascript file.  App folder also consist of fapp.ini, ap;.py, dockerfile, requirement.txt,setup.py</li>
+<li><b>app.ini:</b> Consist confit information such as socket, callable, port etc  for wsgi server</li>
+<li><b>app.py:</b>  It defines a REST interface for the client side to communicate with server and request webpages.</li>
+<li><b>tests:</b> It consists of the conftest.py and pagetest.py. Conftest consists of the python fixtures. They help us set up some helper code that should run before any tests are executed, and are perfect for setting-up resources that are needed by the tests. </li>
+<li><b>docker-compose.yml : </b> File that contains the configuration applications services, it overrides the Dockerfile to run the flask development server instead of running the gunicorn server that is used for hosting on Heroku </li>
+<li><b>Dockerfile : </b> File used to create an docker image to run in a container that runs the program. It also contains information regarding environment, where to store the volumes etc.</li>
+<li><b>heroku.yml : </b>It is used to define configurations needed for running your docker images on Heroku. All config needed are provided in the Dockerfile which is mentioned in the Heroku.yml file.</li>
+<li><b>pytest.ini :</b> used to hold the pytest configuration. It holds the folder where test files are added. When pytest is run on command line, the files in /tests folder are executed because of the path given in the pytest.ini file </li>
+<li><b>readme.md: </b > It is a guide documented by developer that gives information about the github repository. In this project I have added the Heroku prod and dev app links to view the website hosted at these links</li>
+<li><b>requirements.txt : </b> Used to specify the packages that have to be installed to run the given python project. </li>
+<li><b>setup.py: </b>setup.py is a python file  which is an indication that the module/package you are about to install has likely been packaged and distributed with Distutils, which is the standard for distributing Python Modules. </li>
+</ul>
+    <h3> Testing in this project</h3> </br>
+<p>In this project, I have created tests to check if a particular page exists, to check the contents of the page and to check if a non existing page is given in the code. </p>
+<p>Assert command is used to check if the condition in the code returns True, if not it throws assertion error. </p>
+<p>For each page, its tested if the status code of response is 200 and the text in response data is also tested.</p>
+<pre>
+<code>assert</code> response.status_code == 200
+<code>assert</code> b"CI/CD" <code>in</code> response.data </pre>
+<p> Above code is executed to check if the page exists and the string CI/CD exists in the page. </p>
+
+<pre>response = client.get("/page5")
+<code>assert</code> response.status_code == 404 </pre>
+<p>Above code is executed to check if a non existent page return 404 response code</p>
+
 </div>
         <div class="col">
             <div class="bg-muted border border-dark" style="width: 18rem;">
