@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}This is {{ name }} Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1>Python</h1></span>
+        </a>
+
+         <ul class="nav nav-pills">
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page1" class="nav-link ">Git</a></li>
+            <li class="nav-item"><a href="/page2" class="nav-link">Docker</a></li>
+            <li class="nav-item"><a href="/page3" class="nav-link active">Python</a></li>
+            <li class="nav-item"><a href="/page4" class="nav-link">CI/CD</a></li>
+        </ul>
+    </header>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+Python is a high-level multi-paradigm programming language that emphasizes code readability and simplicity, with the aim of helping programmers write clear, logical code for small- and large-scale projects. It features a comprehensive standard library, due to which Python has been a “batteries included” language.
+</p>
+<p>
+Today, Python is one of the most popular programming languages, according to multiple organizations that track programming language utilization for personal, scientific, and enterprise use.
+</p>
+
+
+<h2>Features</h2>
+<p>
+Python is a multi-paradigm programming language, allowing object-oriented and structured programming, with additional support for functional programming constructs and metaprogramming.
+</p>
+<p>
+Python is a dynamically-typed language. It has typed objects, but untyped variable names, and uses duck typing. It also features garbage collection, utilizing a combination of reference counting and a cycle-detecting garbage collector for memory management. It uses dynamic name resolution (late binding), which binds method and variable names during program execution.
+</p>
+            <h2>Pytest</h2>
+            <p>Pytest is a Python testing framework designed to assist developers with writing better systems and releasing them with confidence. Small and scalable tests are simple to write with Pytest.</p><p> This code snippet shows the basic layout of a Pytest test:</p>
+<pre>from api import app # Flask instance of the API
+
+def test_index_route():
+    response = app.test_client().get('/')
+
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Testing, Flask!</pre>
+            <h3>Pytest Fixtures</h3>
+            <p>Software test fixtures initialize test functions. They provide a fixed baseline so that tests execute reliably and produce consistent, repeatable, results. Initialization may setup services, state, or other operating environments. These are accessed by test functions through arguments; for each fixture used by a test function there is typically a parameter (named after the fixture) in the test function’s definition.</p>
+              <h4> Testing in this project</h4> </br>
+<p>In this project, I have created tests to check if a particular page exists, to check the contents of the page and to check if a non existing page is given in the code. </p>
+<p>Assert command is used to check if the condition in the code returns True, if not it throws assertion error. </p>
+<p>For each page, its tested if the status code of response is 200 and the text in response data is also tested.</p>
+<pre>
+<code>assert</code> response.status_code == 200
+<code>assert</code> b"Python 3.10" <code>in</code> response.data </pre>
+<p> Above code is executed to check if the page exists and the string CI/CD exists in the page. </p>
+
+<pre>response = client.get("/page5")
+<code>assert</code> response.status_code == 404 </pre>
+<p>Above code is executed to check if a non existent page return 404 response code</p>
+
+<h2>simple_pages </h2>
+<p>
+simple_pages consist of website templates and __init.py__ files. Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. Rather it is a blueprint of how to construct or extend an application. In this project blueprint object is created and registered for templates. A single route is configured that will render the appropriate page.
+</p>
+<pre>
+@simple_pages.route('/<page>')
+.
+.
+.
+        return render_template('%s.html' % page)
+     </pre>
+
+
+<h4>Testing  simple_pages </h4>
+<p>It consist of methods to test the pages of the website. It runs when the application is deployment and ensures that all test cases are passed. For this website, tests like page existing or not and content of the webpages are tested. The test client makes requests to the application. The client has methods that match the common HTTP request methods, such as client.get() and client.post(). A TestResponse is returned to examine the response data. This response data is checked to see if it returns value as expected </p>
+<h2>Outline of the project </h2>
+<ul>
+<li><b>is601-Project1 :</b> Root of the project </li>
+<li><b>.github: </b> This folder consists of the workflow yaml files(dev.yml and prof.yml) for production and development workflow deployment. </li>
+
+<li><a href="https://github.com/kavihat/is601-Project1/tree/main/app" > <b>app: </b></a>This folder consist of all the files needed for creating the website, creating docker image, configuration file for hosting on heroku, creating context_processors, crating blueprint for routing to website pages etc . It consist of subfolders such as context_processors, simple_pages and static.
+<ul>
+    <li><b>context_processors:</b> To inject a new variable into the context of templates, flask provides a concept called context processor. Context processors run before the template gets rendered and has the ability to inject new values into the context of template.
+A context processor is a function that returns a dictionary </li>
+
+<li><b>Simple_pages:</b>  It consist of the templates for webpages and the blueprint. The basic concept of blueprints is that they record operations to execute when registered on an application. Flask associates view functions with blueprints when dispatching requests and generating URLs from one endpoint to another.</li>
+
+    <li><b>Static:</b> consists of three subfolders - css, images and js. Each containing the stylesheet, images used in webpage and the javascript file.</li>
+    <li><b>__init__.py:</b> It is used to create and configure Flask Application instance, context processors and register blueprint for simple pages</li>
+    <li><b>setup.py: </b>This allows Gunicorn to serve the app in production</li>
+</ul>
+</li>
+   <li><a href="https://github.com/kavihat/is601-Project1/tree/main/tests" > <b>tests: </b></a> It consists of conftest and  pages_test subfolders.
+<ul>
+<li><b>conftest: </b>It consists of the python fixtures. They help us set up some helper code that should run before any tests are executed, and are perfect for setting-up resources that are needed by the tests.</li>
+<li><b>pages_test.py : </b>It consist of methods to test the pages of the website. It runs when the application is deployment and ensures that all test cases are passed. For this website, tests like page existing or not and content of the webpages are tested. The test client makes requests to the application. The client has methods that match the common HTTP request methods, such as client.get() and client.post(). A TestResponse is returned to examine the response data. This response data is checked to see if it returns value as expected.</li></ul>
+    <li><b>docker-compose.yml : </b> File that contains the configuration applications services, it overrides the Dockerfile to run the flask development server instead of running the gunicorn server that is used for hosting on Heroku </li>
+<li><b>Dockerfile : </b> File used to create an docker image to run in a container that runs the program. It also contains information regarding environment, where to store the volumes etc.</li>
+<li><b>heroku.yml : </b>It is used to define configurations needed for running your docker images on Heroku. All config needed are provided in the Dockerfile which is mentioned in the Heroku.yml file.</li>
+<li><b>pytest.ini :</b> used to hold the pytest configuration. It holds the folder where test files are added. When pytest is run on command line, the files in /tests folder are executed because of the path given in the pytest.ini file </li>
+<li><b>readme.md: </b > It is a guide documented by developer that gives information about the github repository. In this project I have added the Heroku prod and dev app links to view the website hosted at these links</li>
+<li><b>requirements.txt : </b> Used to specify the packages that have to be installed to run the given python project. </li>
+<li><b>setup.py: </b>setup.py is a python file  which is an indication that the module/package you are about to install has likely been packaged and distributed with Distutils, which is the standard for distributing Python Modules. </li>
+</ul>
+
+</div>
+        <div class="col">
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/python-logo.png') }}" class="card-img-top rounded-pill"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reference Links</h5>
+                    <p class="card-text"></p>
+                    <a href="https://www.python.org/" class="btn btn-primary  mb-3">Python Homepage</a> </br>
+                     <a href="https://www.w3schools.com/python/" class="btn btn-primary mb-3">Python Tutorial</a>
+                    <a href="https://flask.palletsprojects.com/en/2.0.x/blueprints/" class="btn btn-primary  mb-3">Flask Blueprint Documentation</a>
+                    <a href="https://flask.palletsprojects.com/en/2.0.x/" class="btn btn-primary  mb-3">Flask Documentation</a>
+                    <a href="https://flask.palletsprojects.com/en/2.0.x/testing/" class="btn btn-primary  mb-3">Flask Testing with Pytest</a>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
