@@ -32,7 +32,7 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
 
-            <span class="purple makeBigger fs-4"><h1>Python</h1></span>
+            <span class="purple makeBigger fs-4"><h1><b>Python</b></h1></span>
         </a>
 
          <ul class="nav nav-pills">
@@ -81,7 +81,7 @@ def test_index_route():
 <p>For each page, its tested if the status code of response is 200 and the text in response data is also tested.</p>
 <pre>
 <code>assert</code> response.status_code == 200
-<code>assert</code> b"Python 3.10" <code>in</code> response.data </pre>
+<code>assert</code> b"Python 3.10." <code>in</code> response.data </pre>
 <p> Above code is executed to check if the page exists and the string CI/CD exists in the page. </p>
 
 <pre>response = client.get("/page5")
