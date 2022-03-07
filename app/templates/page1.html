@@ -78,7 +78,26 @@ It is also really helpful to prevent concurrent work from conflicting when multi
  <li>Push: Saves your local committed changes into the remote repository so everybody else has access to your work.</li>
  <li>Tag: Mark specific points in a repository’s history as being important, including designating release points.</li>
             </ul>
-
+   <h2>Concepts in Git</h2>
+<ol>
+<li><b>Repositories: </b>A repository is a working folder under version control. Repositories in git contain a collection of files of various different versions of a project. Git stores the file versions in a hidden .git folder alongside other information it needs to manage code. These files are imported from the repository into the local server of the user for further updates and modifications in the content of the file, an operation called cloning.
+<pre>
+git init creates a new repo from an existing local folder
+git clone copies the contents of an existing repo to a local folder</pre>
+</li>
+<li><b>Branch: </b> Branches are a divergence from the main line of the development of a project, and allows a developer to continue to do work without messing with that main line. Branches enable developers to code in isolation from other changes in development. Once everything's working, the branch and its changes are shared with the team. Others can experiment with the code in their own copy of the branch without it affecting the work in progress in their own branches. A new branch can be created one from any existing one, with a specific commit or tag as the starting point. Being lightweight and local to the development machine, branches are an integral part of the Git development workflow.<pre>
+git checkout < branch > switches to a different branch
+git add and git commit to stage local changes and commit to the feature branch
+git push to push committed changes to the remote feature branch </pre>
+<li><b>Commit: </b><p> A commit in Git is used to record the changes in the repository, denoting a save point in the project development history. Each commit contains the index data, with all local changes included in the commit, and the commit message, which is a description of the changes included. Commits are the snapshots of the project. Every commit is recorded in the master branch of the repository. We can recall the commits or revert it to the older version. Two different commits will never overwrite because each commit has its own commit ID. This ID is a cryptographic number created by a SHA (Secure Hash Algorithm) algorithm.</p>
+<p>In order to create a commit, all included stages need to be staged using a git add command. Then,<pre> git commit -m “Commit Message” </pre> performs the commit, adding a new commit ID to the local history of the repository.</p></li>
+<li><b>Merge:</b> <p> Merging is a procedure used to connect forked histories. It allows you to bring all of the new commits from a feature branch into the mainline branch or another development branch. Git merge will associate a series of commits into one unified history. Often, the result of a merge will be a separate new commit, the so-called "merge commit".</p>
+<pre>git merge < branch > </pre>merges the specified branch to the currently active branch </li>
+<li> <b>Tag: </b> <p> Tags are used to give meaningful names to certain points in the history of a Git repository. Tags are used to mark a commit stage as relevant. We can tag a commit for future reference. Typically, the tag functionality is used to mark release points. </p>
+<p>Git supports two types of tags: lightweight and annotated. A lightweight tag is simply a pointer to a specific commit, commonly used as a temporary tag. Annotated tags, however, are stored as full objects in the Git database and contain the tagger name, email, and date; have a tagging message. Annotated tags are more commonly used, so as to include all this information. </p>
+<pre>git tag -a < tag> -m “Description” </pre> creates a new tag at the current point in the branch history.
+</li>
+</ol>
  </div>
         <div class="col">
             <div class="bg-muted border border-dark" style="width: 18rem;">
