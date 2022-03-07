@@ -2,12 +2,12 @@
 # pylint: disable=redefined-outer-name
 
 import pytest
-from app.app import api
+from app import create_app
 
 @pytest.fixture()
 def application():
     """This makes the app"""
-    application = api
+    application = create_app()
     application.config.update({
         "TESTING": True,
     })
