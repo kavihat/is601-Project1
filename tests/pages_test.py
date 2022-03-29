@@ -2,10 +2,10 @@ def test_request_main_menu_links(client):
     """This makes the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b'<a href="/page1" class="nav-link">Git</a>' in response.data
-    assert b'<a href="/page2" class="nav-link">Docker</a>' in response.data
-    assert b'<a href="/page3" class="nav-link">Python</a>' in response.data
-    assert b'<a href="/page4" class="nav-link">CI/CD</a>' in response.data
+    assert b'<a href="/page1" class="nav-link active">Git</a>' in response.data
+    assert b'<a href="/page2" class="nav-link active">Docker</a>' in response.data
+    assert b'<a href="/page3" class="nav-link active">Python</a>' in response.data
+    assert b'<a href="/page4" class="nav-link active">CI/CD</a>' in response.data
 
 def test_request_index(client):
     """This makes the index page"""
