@@ -11,23 +11,28 @@ def test_operation_is_instance():
 
 def test_operation_addition():
     """Testing the Addition"""
-    a = Add(6, 3)
-    assert a.get_result() == 9
+    obj_a = Add(6, 3)
+    assert obj_a.get_result() == 9
 
 
 def test_operation_subtraction():
     """Testing the Subtraction"""
-    s = Subtract(6, 3)
-    assert s.get_result() == 3
+    obj_s = Subtract(6, 3)
+    assert obj_s.get_result() == 3
 
 
 def test_operation_multiplication():
     """Testing the Multiplication"""
-    m = Multiply(6, 3)
-    assert m.get_result() == 18
+    obj_m = Multiply(6, 3)
+    assert obj_m.get_result() == 18
 
 
 def test_operation_division():
     """Testing the Division"""
-    d = Divide(6, 3)
-    assert d.get_result() == 2
+    obj_d = Divide(6, 3)
+    assert obj_d.get_result() == 2
+
+def test_operation_division_by_zero():
+    """Testing the Division"""
+    obj_d = Divide(6, 0)
+    assert obj_d.get_result() is None

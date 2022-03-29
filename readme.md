@@ -8,6 +8,7 @@
 [![Development Workflow](https://github.com/kavihat/is601-Project1/actions/workflows/dev.yml/badge.svg)](https://github.com/kavihat/is601-Project1/actions/workflows/dev.yml)
 * [Developmental Deployment](https://docker-project1-dev.herokuapp.com/)
 
+![Coverage Report](app/static/images/CoverageReport.png)
 ## Setting up CI/CD
 
 The result of this will be that when you create a pull request to merge a branch to master, it will deploy to your

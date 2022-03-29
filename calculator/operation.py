@@ -10,7 +10,7 @@ class Operation(ABC):
     @abstractmethod
     def get_result(self):
         """Creating an interface which cannot be modified but extended as needed"""
-        pass
+        pass    # pragma: no cover
 
 
 class Add(Operation):

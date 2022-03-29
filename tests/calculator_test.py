@@ -20,3 +20,8 @@ def test_calculator_multiply():
 def test_calculator_divide():
     """Testing the divide"""
     assert Calculator.divide(1, 1) == 1
+
+
+def test_calculator_divide_by_zero():
+    """Testing exception case"""
+    assert Calculator.divide(1,0) == None
