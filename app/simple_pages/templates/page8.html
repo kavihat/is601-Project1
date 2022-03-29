@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}My Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1><b>Programming Principles</b></h1></span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page5" class="nav-link">Glossary</a></li>
+            <li class="nav-item"><a href="/page6" class="nav-link">AAA Testing</a></li>
+            <li class="nav-item"><a href="/page7" class="nav-link">OOP Concepts</a></li>
+            <li class="nav-item"><a href="/page8" class="nav-link active">SOLID and Design Patterns</a></li>
+        </ul>
+    </header>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2><b>The <code>Calculator</code> Program</b></h2>
+            <p>In this page, we will be using the example of a Calculator program to explain the <b>SOLID</b>
+                programming
+                principles. We will also be highlighting some design patterns used in this program.</p>
+
+            <p>To begin with, an overview of the Calculator program. The main interface is the <code>Calculator</code>
+                class. A user can perform simple arithmetic operations using the appropriate methods in this class.</p>
+
+            <p>
+
+            <pre>
+class Calculator:
+    @staticmethod
+    def add(value1, value2):
+        addition = Add(value1, value2)
+        return addition.get_result()
+
+    @staticmethod
+    def subtract(value1, value2):
+        ...
+
+    @staticmethod
+    def multiply(value1, value2):
+        ...
+
+    @staticmethod
+    def divide(value1, value2):
+        ...
+</pre>
+            </p>
+
+            <p>
+                Each method in the <code>Calculator</code> class creates objects of the <code>Operation</code> type,
+                which is an abstract base class for the <code>Add</code>, <code>Subtract</code>, <code>Multiply</code>
+                and <code>Divide</code> classes, which perform the actual arithmetic operations, given two numbers.
+            </p>
+            <p>
+            <pre>
+class Operation(ABC):
+    @abstractmethod
+    def get_result(self):
+        pass
+
+class Add(Operation):
+    def __init__(self, value1, value2):
+        self.__value1 = value1
+        self.__value2 = value2
+
+    def get_result(self):
+        return self.__value1 + self.__value2
+
+class Subtract(Operation):
+    ...
+            </pre>
+            </p>
+
+            <p>
+                Using this design, we will now look at two popular concepts in Software Engineering and OOP: the SOLID
+                principles, and Design Patterns.
+            </p>
+
+            <h2><b>SOLID</b></h2>
+            <p>The SOLID programming principles was originated by Robert C. Martin, and it stands for five different
+                conventions of programming. These principles help to develop software that can be maintained and
+                extended throughout its lifetime. The SOLID principles do this by avoiding code smells, refactoring
+                code and applying Agile software development.
+            </p>
+            <p>
+                If you follow these principles you can improve the readability of your code by working on its structure
+                and its logical consistency.
+            <ol>
+                <li><b>S</b>ingle Responsibility Principle</li>
+                <li><b>O</b>pen/Closed Principle</li>
+                <li><b>L</b>iskov Substitution Principle</li>
+                <li><b>I</b>nterface Segregation Principle</li>
+                <li><b>D</b>ependency Inversion Principle</li>
+            </ol>
+            </p>
+
+            <h4><b>S</b>ingle Responsibility Principle</h4>
+            <p>
+                The single-responsibility principle (SRP) is a computer-programming principle that states that every
+                module, class or function in a computer program should have responsibility over a single part of that
+                program's functionality, and it should encapsulate that part.
+            </p>
+
+            <p>
+            <pre>
+def add(value1, value2):
+    """Testing the add"""
+    obj_a = Add(value1, value2)
+    return obj_a.get_result()
+
+class Add:
+    def get_result(self):
+        return self.__value1 + self.__value2
+            </pre>
+            </p>
+
+            <p>In our example, the <code>Calculator.add()</code> method has the responsibility of returning the sum,
+                but not actually performing the addition. The <code>Add.get_result()</code> method has the single
+                responsibility of performing an addition and returning its result.</p>
+
+            <h4><b>O</b>pen Close Principle</h4>
+            <p>
+                According to this principle, software entities should be open for extension but closed for modification.
+                Our <code>Add</code>, <code>Subtract</code>, <code>Multiply</code> and <code>Divide</code> classes
+                are each responsible for one behavior, and are whole and complete in terms of functionality.
+            </p>
+            <p>
+            <pre>
+class Add(Operation):
+    """performing the addition"""
+    def get_result(self):
+        return self.__value1 + self.__value2
+
+class Subtract(Operation):
+    """performing the subtraction"""
+    def get_result(self):
+        return self.__value1 - self.__value2
+        </pre>
+            </p>
+
+            <p>In order to support any more operations, say logarithms, none of the existing classes need to be changed.
+                Instead, the <code>Operation</code> interface can be further extended to a new <code>Logarithm</code>
+                sub-class, which will handle the logarithm operation.
+            </p>
+
+            <h4><b>L</b>iskov Substitution Principle</h4>
+            <p>This principle states that we can substitute a subclass for its base class without affecting behavior. It
+                is supported by the object-oriented concepts of inheritance and polymorphism. This basically means that
+                objects of a superclass shall be replaceable with objects of its subclasses without breaking the
+                application.
+            </p>
+
+            <p>
+                Consider the following testing code:
+            <pre>
+def test_type_bad():
+    a = Add(1, 2)
+    assert(type(a) == Add)
+    assert(type(a) == Add)
+
+def test_type_good():
+    a = Add(1, 2)
+    assert isinstance(a, Add)
+    assert isinstance(a, Operation)
+            </pre>
+            </p>
+            <p>
+                The second <code>assert</code> in <code>test_type_bad()</code> will fail because <code>type()</code>
+                does not obey Liskov Substitution. However, both the <code>assert</code>s will pass in
+                <code>test_type_good</code> because <code>isinstance()</code> permits replacing a child class with its
+                parent class.
+            </p>
+
+            <h4><b>I</b>nterface Segregation Principle</h4>
+            <p>
+                This principle states that a client should not be exposed to methods it does not need. It is closely
+                related to the Liskov Substitution principle and Single Responsibility principle.
+            </p>
+            <p>
+                The Interface Segregation Principle is helpful because:
+            <ul>
+                <li>Client developers exposed to methods they don't need</li>
+                <li>Maintenance becomes easier</li>
+                <li>It follows the Single responsibility principle making it readable and structured</li>
+            </ul>
+            </p>
+
+            <p>
+                In our example, any modifications to the behavior of the <code>Divide</code> operation does not need to
+                deal with the behavior of the other classes. The fact that there is no reference to the other classes
+                (Single Responsibility Principle at work!) makes this possible.
+            </p>
+
+            <h4><b>D</b>ependency Inversion Principle</h4>
+            <p>
+                This principle states that high level modules which provide complex logic, should be easily reusable and
+                unaffected by changes made to low level modules. The high level module must depend on abstractions of
+                lower level modules, and not on concrete implementations.
+            </p>
+
+            <p>
+                Our <code>Calculator</code> class can confidently call the <code>get_result()</code> method of any
+                operation object it has created, because it only needs to depend on the behavior guaranteed by the
+                <code>Operation</code> interface and not on the specific implementation of any of its sub-classes.
+            </p>
+
+<br />
+
+            <h2><b>Design Patterns used in Calculator code</b></h2>
+            <p>
+            Next we will look at some Design Patterns that our <code>Calculator</code> program uses. Design
+            Patterns are general solutions to common programming problems, that can be applied (thoughtfully) to a
+            given situation. Consider the following bit of code from our <code>Calculator</code> example:
+            </p>
+            <pre>
+class Calculator:
+   @staticmethod
+   def add(value1, value2):
+       """Testing the add"""
+       obj_a = Add(value1, value2)
+       return obj_a.get_result()
+
+. . .
+
+class Add(Operation):
+   def __init__(self, value1, value2):
+       self.__value1 = value1
+       self.__value2 = value2
+
+   def get_result(self):
+       return self.__value1 + self.__value2
+            </pre>
+
+            <p>This bit of code uses two design patterns.</p>
+
+            <h4>Command Pattern</h4>
+            <p>The <code>Calculator</code> class builds the request to be sent to the <code>Add</code> class from the
+                arguments it is given, and uses the <code>get_result()</code> method to compile a response for this
+                request object. This is the Command design pattern.
+            </p>
+            <p>
+                Command is a behavioral design pattern that turns a request into a stand-alone object that contains all
+                the information about the request.
+            </p>
+
+            <h4>Facade Pattern</h4>
+            <p>
+                In our example, the <code>Calculator</code> acts as a gateway to the <code>Add</code> class. The user
+                does not need to know how addition is implemented, or indeed how to build an <code>Add</code> object.
+                Instead, the user only needs to interact with the <code>add()</code> method in the
+                <code>Calculator</code> class. This is the Facade design pattern.
+            </p>
+            <p>
+                Facade is a structural design pattern that provides a simplified interface to a library, a framework, or
+                any other complex set of classes. It comes under structural design pattern as this pattern adds an
+                interface to existing system to hide its complexities.
+            </p>
+
+        </div>
+        <div class="col col-right">
+            <div class="bg-muted border border-dark mb-5" style="width: 18rem;">
+
+                <div class=" card-body">
+                    <h5 class="maroon card-title"><b>Reference Links</b></h5>
+                    <p class="card-text"></p>
+                    <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design"
+                       class="btn btn-primary  mb-3">Article on SOLID</a>
+                    <a href="https://en.wikipedia.org/wiki/SOLID" class="btn btn-primary  mb-3">Wikipedia</a>
+                    <a href="https://www.bmc.com/blogs/solid-design-principles/" class="btn btn-primary  mb-3">Importance
+                        of SOLID</a>
+                </div>
+            </div>
+
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="maroon card-title "><b>More Tutorials</b></h5>
+                    <p class="card-text "></p>
+                    <a href="/page1" class="btn btn-dark mb-3  ">Git</a>
+                    <a href="/page2" class="btn btn-dark mb-3  ">Docker</a>
+                    <a href="/page3" class="btn btn-dark mb-3  ">Python</a>
+                    <a href="/page4" class="btn btn-dark mb-3  ">CI/CD</a>
+                    <a href="/page5" class="btn btn-info mb-3  ">Glossary</a>
+                    <a href="/page6" class="btn btn-info mb-3  ">AAA Testing</a>
+                    <a href="/page7" class="btn btn-info mb- 3">OOPs Concepts</a>
+                </div>
+            </div>
+            <p>
+            <figure class="figure mt-5">
+                <img src="{{ url_for('static', filename='images/solid.jpeg') }}" class="img-fluid" alt="...">
+                <figcaption class="figure-caption">SOLID principles</figcaption>
+            </figure>
+            </p>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
+

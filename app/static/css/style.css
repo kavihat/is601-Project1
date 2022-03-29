@@ -1,5 +1,5 @@
 body {
-    font-family: Helvetica, "Helvetica Neue", sans-serif;
+    font-family: Verdana, "Helvetica Neue", sans-serif;
 }
 
 .blue{
@@ -29,4 +29,8 @@ body {
 .carousel-control-next,
 .carousel-control-prev /*, .carousel-indicators */ {
     filter: invert(100%);
+}
+
+.col-right {
+    max-width: 25%;
 }

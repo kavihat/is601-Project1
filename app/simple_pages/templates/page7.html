@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}My Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+
+            <span class="purple makeBigger fs-4"><h1><b>OOPs Concepts</b></h1></span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page5" class="nav-link">Glossary</a></li>
+            <li class="nav-item"><a href="/page6" class="nav-link">AAA Testing</a></li>
+            <li class="nav-item"><a href="/page7" class="nav-link active">OOP Concepts</a></li>
+            <li class="nav-item"><a href="/page8" class="nav-link ">SOLID and Design Patterns</a></li>
+        </ul>
+    </header>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Object Oriented Programming</h2>
+            <p>Object Oriented Programming is a programming paradigm that relies on the concept of classes and objects.
+                It helps to structure the software program into simple, reusable pieces of code blueprints which are
+                used to create individual instances of objects.</p>
+
+            <p>
+                Object Oriented Programming is important because it makes visualization easier by being close to
+                real-world scenarios and helps in implementing real world like entities.
+            </p>
+            <p>
+                Popular object-oriented languages include Java, C++, Python, and C#.
+                The primary philosophy of OOP is to bind the data and the functions that work on that together as a
+                single unit so that no other part of the code can access this data.
+            </p>
+            <p>The main OOP concepts are:</p>
+            <ul>
+                <li>Data Abstraction</li>
+                <li>Encapsulation</li>
+                <li>Inheritance</li>
+                <li>Polymorphism</li>
+            </ul>
+
+            <h3><b>Data Abstraction</b></h3>
+            <p>
+                Abstraction is hiding the internal details or implementations of a function or object and only exposing
+                its external behavior. In Python, any function abstracts the inner implementation from its caller and
+                exposes only its behavior via return values and side effects. Further, abstract classes can be used to
+                model real-world behavior by enumerating functionality expected from any non-abstract class that is
+                based on the abstract class.
+
+                In the following example, <code>abc.ABC</code> is used to create an abstract base class (ABC) which
+                defines the behavior expected from its child classes.
+            </p>
+
+            <pre>
+from abc import ABC, abstractmethod
+
+class Operation(ABC):
+   """class operation for specifying operations"""
+   @abstractmethod
+   def get_result(self):
+       """Creating an interface which cannot be modified but extended as needed"""
+       pass
+            </pre>
+
+            <p>Here we are creating an <code>Operation</code> class as the abstract class. It declares an abstract
+                <code>get_result()</code> method, which is the interface which will be implemented in any class that
+                inherits the <code>Operation</code> class. The child class needs to provide the definition and these
+                definitions are hidden from the user.
+            </p>
+
+            <h3><b>Encapsulation</b></h3>
+            <p>
+                Encapsulation describes the idea of wrapping data and methods that work on data as a unit. This enhances
+                security by restricting accessing variables and methods directly and prevents accidental modification of
+                data. This is achieved by using private variables for an object that can be changed only with an object
+                method.
+            </p>
+
+            <p>
+            <pre>
+class Multiply(Operation):
+   """performing the multiplication"""
+   def __init__(self, value1, value2):
+       self.__value1 = value1
+       self.__value2 = value2
+
+   def get_result(self):
+       return self.__value1 * self.__value2
+            </pre>
+            </p>
+
+            <p>To define a private member in Python, prefix the member name with double underscore. As you can see in
+                the code snippet, <code>__value1</code> is a private member that cannot be accessed by users but can be
+                modified by class methods. It is the idea of wrapping the variables (<code>__value1</code>,
+                <code>__value2</code>), with the methods that act on them (<code>get_result()</code>) as a unit that is
+                described as Encapsulation.
+            </p>
+            <p><small>In reality, there are no “private” instance variables in Python that cannot be accessed outside
+                an object. However, a convention being followed by most Python developers is to treat
+                <code>__variables</code> as a non-public part of the API.</small>
+            </p>
+
+            <h3><b>Polymorphism</b></h3>
+            <p>Polymorphism is a Greek word where <i>poly</i> means many and <i>morph</i> means forms. In OOP, it refers
+                to the functions that have the same names but carry different functionalities.
+            </p>
+            <p>Consider the below code snippet, here we have <code>+</code> operator that adds 2 operands and returns
+                an integer value if the operands are integers. The same operator also returns a float value if the
+                operands are floats and returns a concatenated string if the operands are strings. The behavior changes
+                based on the arguments, if the function name remains the same.</p>
+            <p>
+
+            <pre>
+class Add(Operation):
+   """performing the addition"""
+   def __init__(self, value1, value2):
+       self.__value1 = value1
+       self.__value2 = value2
+
+   def get_result(self):
+       return self.__value1 + self.__value2
+            </pre>
+            </p>
+
+            <p>When <code>+</code> operator is used, it assigns the arguments to variables and performs “+” operation on
+                them regardless of the data type being integer, float or string. This behavior is called Polymorphism
+            </p>
+
+            <h3><b>Inheritance</b></h3>
+            <p>
+                Inheritance is the mechanism in which one class inherits attributes and methods from another class. The
+                class being inherited from is called <b>parent class</b> or <b>base class</b>.The class that inherits
+                from another class is called <b>child class</b> or <b>derived class</b>.
+            </p>
+
+            <p>
+            <pre>
+from abc import ABC, abstractmethod
+
+class Operation(ABC):
+   """class operation for specifying operations"""
+   @abstractmethod
+   def get_result(self):
+       """Creating an interface which cannot be modified but extended as needed"""
+       pass
+            </pre>
+            </p>
+
+            <p>
+            <pre>class Add(Operation):
+   """performing the addition"""
+   def __init__(self, value1, value2):
+       self.__value1 = value1
+       self.__value2 = value2
+
+   def get_result(self):
+       return self.__value1 + self.__value2
+</pre>
+            </p>
+            <p>
+                Here, <code>Operation</code> is the base class and <code>Add</code> is the subclass. <code>Add</code>
+                inherits the declaration of the method <code>get_result()</code> from the base class for which it
+                provides its own implementation (adding operands and returning the sum).
+            </p>
+        </div>
+        <div class="col col-right">
+            <div class="bg-muted border border-dark mb-5" style="width: 18rem;">
+
+                <div class="card-body">
+                   <h5 class="maroon card-title"><b>Reference Links</b></h5>
+                    <p class="card-text"></p>
+                    <a href="" class="btn btn-primary  mb-3">Geeks for Geeks Article</a>
+                    <a href=" https://en.wikipedia.org/wiki/Object-oriented_programming" class="btn btn-primary  mb-3">Wikipedia</a>
+                     <a href="https://www.edureka.co/blog/object-oriented-programming-python/" class="btn btn-primary">OOP vs Procedural</a>
+                </div>
+            </div>
+
+               <div class="bg-muted border border-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="maroon card-title"><b>More Tutorials</b></h5>
+                    <p class="card-text "></p>
+                    <a href="/page1" class="btn btn-dark mb-3  ">Git</a>
+                    <a href="/page2" class="btn btn-dark mb-3  ">Docker</a>
+                    <a href="/page3" class="btn btn-dark mb-3  ">Python</a>
+                    <a href="/page4" class="btn btn-dark mb-3  ">CI/CD</a>
+                    <a href="/page5" class="btn btn-info mb-3  ">Glossary</a>
+                    <a href="/page6" class="btn btn-info mb-3  ">AAA testing</a>
+                    <a href="/page8" class="btn btn-info mb- 3">SOLID and Design Patterns</a>
+             </div>
+            </div>
+
+              <p>
+            <figure class="figure mt-5">
+                <img src="{{ url_for('static', filename='images/oop.png') }}" class="img-fluid" alt="...">
+                <figcaption class="text-center figure-caption"></br>Object Oriented Programming Concepts</figcaption>
+            </figure>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

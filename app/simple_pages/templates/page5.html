@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+        <title>{% block title %}{% endblock %}My Website</title>
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="purple makeBigger fs-4"><h1><b>Glossary</b></h1></span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/page5" class="nav-link active">Glossary</a></li>
+            <li class="nav-item"><a href="/page6" class="nav-link ">AAA Testing</a></li>
+            <li class="nav-item"><a href="/page7" class="nav-link">OOP concepts</a></li>
+            <li class="nav-item"><a href="/page8" class="nav-link">SOLID and Design Patterns</a></li>
+        </ul>
+    </header>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4><b>Abstraction</b></h4>
+            <p>The process of hiding details or attributes in an object or system to highlight details of greater
+                importance, thereby reducing complexity.
+            </p>
+            <h5><b><p class="text-secondary">Abstract Method</p></b></h5>
+            <p>A method that has a declaration but does not have an implementation. Defines the signature of a class
+                method that can be concretely defined in a subclass. Implemented in Python using the
+                <code>@abstractmethod</code> method decorator.
+            </p>
+
+            <h5><b><p class="text-secondary">Abstract Class</p></b></h5>
+            <p>A class that cannot be instantiated, but can be subclassed. An abstract class may or may not include
+                abstract methods, but any concrete subclass must implement abstract methods inherited from the abstract
+                base class. An abstract base class (ABC) provides a common interface for any concrete implementation of
+                a component. Implemented in Python by having the abstract class derive from <code>abc.ABC</code>.
+            </p>
+
+            <h4><b>Class</b></h4>
+            <p>A blueprint to define an entity or system as a collection of related behaviors and internal state. A
+                class is used to create individual instances of these entities (objects), providing initial values for
+                state (member variables) and implementations of behavior (member functions or methods).
+            </p>
+
+            <h4><b>Constructor</b></h4>
+            <p>A special method within a class that is used to create and return an object of that class, and the
+                created object is called an instance of the class. The constructor set the initial state of the created
+                objects. In many languages, the constructor method has the same name as the class itself. In Python, the
+                constructor method <code>__new__()</code> creates a new object, while the <code>__init__()</code> method
+                sets initial values for created objects.
+            </p>
+
+            <h4><b>Design Patterns</b></h4>
+            <p>General reusable solution to a commonly occurring problem in software design. Design patterns prescribe
+                a template to solve a problem that is applicable in many situations, without providing a concrete
+                design. Many software developers use design patterns as a formal description of best practices that are
+                used in software design. Examples include the Factory Method, Builder, Decorator, Observer, and Visitor
+                design patterns.
+            </p>
+
+            <h4><b>Encapsulation</b></h4>
+            <p>In the context of Object-Oriented Programming, encapsulation refers to the concept of bundling data and
+                the methods that operate on the data, into a single unit. Encapsulation is often provided by classes,
+                which hides the state of the structured data inside an object, instead enforcing controlled access to
+                these state variables and implementation details by the use of getter and setter methods.
+            </p>
+
+            <h4><b>Fixture</b></h4>
+            <p>Function that is attached to a test function and runs before the test to which it is attached. Fixtures
+                are used to feed data to a test, such as database connections, file handles, or input data. Fixtures
+                allow multiple tests to share an initial environment without having to repeat code. In Python, using the
+                pytest library, the <code>@pytest.fixture</code> annotation marks a function as a fixture that can be
+                attached to unit tests or other fixtures.
+            </p>
+
+            <h4><b>Inheritance</b></h4>
+            <p>In the context of Object-Oriented Programming, inheritance refers to the mechanism by which a class
+                (called a child or derived class) is built upon, and acquires properties — such as data members and
+                member functions — of another class (called parent or base class) or classes. Inheritance facilitates
+                code reusability, and allows a class to derive behaviors from its parent class(es) without having to
+                duplicate the implementation. Inheritance can also allow a class to provide alternate implementations
+                for the same behavior, i.e., maintaining the same interface.
+            </p>
+
+            <h4><b>Instance Method</b></h4>
+            <p>Instance methods are functions defined in a class that are executed within the context of a created
+                class object (instance). By running within an instantiated object, and possessing a reference to the
+                instance to which it is bound (called <code>self</code> in Python), instance methods are able to access
+                instance variables, class and static variables, and call other instance methods as well as class and
+                static methods.
+            </p>
+
+            <h4><b>Instance property</b></h4>
+            <p>Instance property (also, instance attribute) is variable defined within a class that is bound to (or
+                belongs to) only one object instance of the class. In other words, each instance of a class possesses
+                its own set of instance properties. Most commonly instance properties are declared and initialized
+                within the class constructor.
+            </p>
+
+            <h4><b>Instantiation</b></h4>
+            <p>Instantiation in Object-Oriented Programming refers to the creation of an instance (object) of a class,
+                most commonly through the use of the constructor method. Instantiation also sets initial/default values
+                for instance attributes. In Python, instantiation using the constructor takes the form:
+            <pre>object_name = ClassName(args…)</pre>
+            </p>
+
+            <h4><b>Namespace</b></h4>
+            <p>A namespace is a named grouping of objects, functions and types, created during the execution of a
+                Python program. Every variable declaration, function definition, module and package is placed within a
+                namespace within which they are resolved. Namespaces are used to resolve names unambiguously, and to
+                define the scope and lifetimes of the names defined within them.
+            </p>
+
+            <h4><b>Object</b></h4>
+            <p>An object is the product of a class instantiation (instance of a class). It is an allocation in memory
+                of instance properties, bundled with the methods that act on these properties.
+            </p>
+
+            <h4><b>Polymorphism</b></h4>
+            <p>Mechanism in Object-Oriented Programming where an object or function can take on different forms based
+                on the context in which it is called or accessed. E.g., the <code>+</code> operator has different
+                polymorphic forms and behaves differently depending on the operands that it is given — integers, floats,
+                strings or lists.
+            </p>
+
+            <h4><b>Type Cast</b></h4>
+            <p>An implicit or explicit conversion of an object to a different type. Type casting can be used explicitly
+                to enforce specific behavior within a polymorphic function, reframe an object of a child class as an
+                object of a parent class, or implicitly to prevent data loss.
+            </p>
+
+            <h4><b>Type hint</b></h4>
+            <p>Type hints is a feature of Python (and other dynamically typed languages) that allows a programmer to
+                explicitly declare the data-type of a variable when declaring it. This increases readability, allows the
+                interpreter to sanity-check data types during runtime, and allows the programmer to signal which
+                behavior of a polymorphic function or object is expected.
+            </p>
+
+            <h4><b>SOLID</b></h4>
+            <p>SOLID is a group of five design principles used in Object-Oriented Programming — <b>S</b>ingle
+                Responsibility Principle, <b>O</b>pen/Closed Principle, <b>L</b>iskov Substitution Principle,
+                <b>I</b>nterface Segregation Principle, and <b>D</b>ependency Inversion Principle. The aim of the SOLID
+                principles is to increase code readability, and build maintainable and extensible code.
+            </p>
+
+            <h4><b>Static</b></h4>
+            <p>Static is a property modifier that an entity is related to an object or class, but is not bound to any
+                specific instance of that class. Static objects have a lifetime throughout the lifetime of the program
+                (even when not in scope).
+            </p>
+
+            <h5><b><p class="text-secondary">Static Method</p></b></h5>
+            <p>Static methods are functions that are created within a class namespace that relate to the behavior of a
+                class, but do not control or access the internal state of the class or any class object. These are
+                utility functions that express the behavior of a class, but do not reference the class or class object.
+            </p>
+
+            <h5><b><p class="text-secondary">Static property</p></b></h5>
+            <p>Static properties are variables that are created within a class namespace, but do not directly represent
+                the internal state of a class object. They are declared outside any class method, and do not change
+                between class instances.
+            </p>
+
+            <h4><b>Unit Testing</b></h4>
+            <p>A unit test is a short program fragment which exercises some narrow part of the product’s source code
+                and checks the results. The result of a unit test is binary — either a pass or a fail. Unit tests check
+                an individual module in isolation, and therefore are not typically dependent on external systems,
+                services or applications. <code>Pytest</code> is the most popular unit testing framework for Python.
+            </p>
+
+        </div>
+        <div class="col col-right">
+            <div class="bg-muted border border-dark mb-5" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="maroon card-title"><b>Reference Links</b></h5>
+                    <p class="card-text"></p>
+                    <a href="https://www.d.umn.edu/~gshute/softeng/object-oriented.html" class="btn btn-primary  mb-3">OOP
+                        Terminology</a>
+                    <a href="https://www.programiz.com/python-programming/first-program" class="btn btn-primary  mb-3">OOPs
+                        in Python Tutorial</a>
+                    <a href=" https://en.wikipedia.org/wiki/Object-oriented_programming" class="btn btn-primary  mb-3">Wikipedia</a>
+
+                </div>
+            </div>
+
+            <div class="bg-muted border border-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="maroon card-title "><b>More Tutorials</b></h5>
+                    <p class="card-text "></p>
+                    <a href="/page1" class="btn btn-dark mb-3  ">Git</a>
+                    <a href="/page2" class="btn btn-dark mb-3  ">Docker</a>
+                    <a href="/page3" class="btn btn-dark mb-3  ">Python</a>
+                    <a href="/page4" class="btn btn-dark mb-3  ">CI/CD</a>
+                    <a href="/page6" class="btn btn-info mb-3  ">AAA testing</a>
+                    <a href="/page7" class="btn btn-info mb-3  ">OOP Concepts</a>
+                    <a href="/page8" class="btn btn-info mb- 3">SOLID and Design Patterns</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
